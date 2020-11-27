@@ -83,3 +83,7 @@ D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\obj\Debug\NK_Back
 D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\obj\Debug\NK_Back-end_API.csproj.CopyComplete
 D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\obj\Debug\NK_Back-end_API.dll
 D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\obj\Debug\NK_Back-end_API.pdb
+D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\bin\EntityFramework.dll
+D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\bin\EntityFramework.SqlServer.dll
+D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\bin\EntityFramework.xml
+D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\bin\EntityFramework.SqlServer.xml

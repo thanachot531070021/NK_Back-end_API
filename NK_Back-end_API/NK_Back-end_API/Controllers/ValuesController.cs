@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NK_Back_end_API.Entitiy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,10 +10,14 @@ namespace NK_Back_end_API.Controllers
 {
     public class ValuesController : ApiController
     {
+
+        private DB_DevEntities _database =new DB_DevEntities();
         // GET api/values
-        public IEnumerable<string> Get()
+        public IEnumerable<Members> Get()
+        //public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return this._database.Members.ToList();
+            //return this._database.Members.Select( m=>m.email).ToList();
         }
 
         // GET api/values/5
