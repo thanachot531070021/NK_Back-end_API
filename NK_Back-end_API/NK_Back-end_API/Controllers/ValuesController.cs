@@ -11,9 +11,17 @@ namespace NK_Back_end_API.Controllers
     public class ValuesController : ApiController
     {
 
-        private DB_DevEntities _database =new DB_DevEntities();
-        // GET api/values
-        public IEnumerable<Members> Get()
+        private DB_DevEntities _database = new DB_DevEntities();
+
+
+           [Route("api/accoubt/login")]
+            public IHttpActionResult PostLogin()
+            {
+                return  BadRequest("Login POST Page.");
+            }
+
+    // GET api/values
+    public IEnumerable<Members> Get()
         //public IEnumerable<string> Get()
         {
             return this._database.Members.ToList();

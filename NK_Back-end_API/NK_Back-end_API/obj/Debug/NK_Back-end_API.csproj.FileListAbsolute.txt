@@ -176,3 +176,6 @@ D:\Dev\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\obj\Debug\NK_Back-end_API
 D:\Dev\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\obj\Debug\NK_Back-end_API.csproj.CopyComplete
 D:\Dev\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\obj\Debug\NK_Back-end_API.dll
 D:\Dev\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\obj\Debug\NK_Back-end_API.pdb
+D:\Dev\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\bin\System.Web.Cors.dll
+D:\Dev\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\bin\System.Web.Http.Cors.dll
+D:\Dev\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\bin\System.Web.Http.Cors.xml
