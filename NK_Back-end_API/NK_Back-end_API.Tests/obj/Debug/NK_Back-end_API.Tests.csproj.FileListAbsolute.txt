@@ -93,3 +93,7 @@ D:\Dev\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API.Tests\obj\Debug\NK_Back-e
 D:\Dev\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API.Tests\bin\Debug\System.Web.Cors.dll
 D:\Dev\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API.Tests\bin\Debug\System.Web.Http.Cors.dll
 D:\Dev\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API.Tests\bin\Debug\System.Web.Http.Cors.xml
+D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API.Tests\bin\Debug\System.Web.Cors.dll
+D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API.Tests\bin\Debug\System.Web.Http.Cors.dll
+D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API.Tests\bin\Debug\System.Web.Http.Cors.xml
+D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API.Tests\bin\Debug\SimplePassword.dll

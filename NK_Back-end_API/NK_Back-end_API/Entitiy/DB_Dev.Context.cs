@@ -13,10 +13,10 @@ namespace NK_Back_end_API.Entitiy
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DB_DevEntities : DbContext
+    public partial class DB_DevEntities1 : DbContext
     {
-        public DB_DevEntities()
-            : base("name=DB_DevEntities")
+        public DB_DevEntities1()
+            : base("name=DB_DevEntities1")
         {
         }
     

@@ -4,16 +4,16 @@
     <EntitySetMapping Name="Members">
       <EntityTypeMapping TypeName="DB_DevModel.Members">
         <MappingFragment StoreEntitySet="Members">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="firstname" ColumnName="firstname" />
-          <ScalarProperty Name="lastname" ColumnName="lastname" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="position" ColumnName="position" />
-          <ScalarProperty Name="image" ColumnName="image" />
-          <ScalarProperty Name="role" ColumnName="role" />
-          <ScalarProperty Name="created" ColumnName="created" />
           <ScalarProperty Name="updated" ColumnName="updated" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
