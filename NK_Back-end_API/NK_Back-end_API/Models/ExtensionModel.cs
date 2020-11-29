@@ -18,5 +18,13 @@ namespace NK_Back_end_API.Models
             if (modelValue == null) return null;
             return modelValue[0].ErrorMessage;
         }
+
+        // ปรับแต่งค่า Error Exception แสดงค่า inner Exception ในสุด
+        public static Exception GetErrorException(this Exception exception) {
+            if (exception.InnerException != null) 
+                return exception.InnerException.GetErrorException();
+            return exception;
+        }
+
     }
 }

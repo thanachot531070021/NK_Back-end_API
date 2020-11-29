@@ -1,4 +1,6 @@
-﻿using NK_Back_end_API.Models;
+﻿using NK_Back_end_API.Interfaces;
+using NK_Back_end_API.Models;
+using NK_Back_end_API.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +12,33 @@ namespace NK_Back_end_API.Controllers
 {
     public class AccountController : ApiController
     {
-        //การลงทะเบียน
 
+        private IAccountService Account;
+
+        protected AccountController()
+        {
+            this.Account = new AccountService();
+        }
+
+
+        //การลงทะเบียน
         [Route("api/account/register")]
         public IHttpActionResult PostRegister([FromBody] RegisterModel model) 
         {
             if (ModelState.IsValid)
             {
-                model.password = PasswordHashModel.Hash(model.password);
-                return Json(model);
+
+                try {
+                    model.password = PasswordHashModel.Hash(model.password);
+                    this.Account.Register(model);
+                    //return Ok("Successful"); 
+                    return Ok(model);
+                    //return Json(model);
+                }
+                catch (Exception ex){
+                    ModelState.AddModelError("Excption", ex.Message);
+                }
+             
 
             }
 
