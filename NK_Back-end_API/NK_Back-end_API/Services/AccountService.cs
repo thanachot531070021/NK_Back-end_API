@@ -12,6 +12,24 @@ namespace NK_Back_end_API.Services
     {
         private DB_DevEntities db = new DB_DevEntities();
 
+
+        // เข้าสู่ระบบ
+        public bool Login(LoginModel model)
+        {
+            try{
+                var memberItem = this.db.Member.SingleOrDefault(m=> m.email.Equals(model.email));
+                if (memberItem != null) {
+                    return PasswordHashModel.Verify(model.password, memberItem.password);
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex.GetErrorException();
+            }
+
+        }
+
         // ลงทะเบียน
         public void Register(RegisterModel model)
         {
@@ -41,22 +59,26 @@ namespace NK_Back_end_API.Services
                 throw ex.GetErrorException();
             }
 
-            //catch เอาไว้เชค col ว่า type ผิดไหม
-            //catch (DbEntityValidationException e)
-            //{
-            //    foreach (var eve in e.EntityValidationErrors)
-            //    {
-            //        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-            //            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-            //        foreach (var ve in eve.ValidationErrors)
-            //        {
-            //            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-            //                ve.PropertyName, ve.ErrorMessage);
-
-            //        }
-            //    }
-            //    throw;
-            //}
+           
         }
     }
 }
+
+
+
+//catch เอาไว้เชค col ว่า type ผิดไหม
+//catch (DbEntityValidationException e)
+//{
+//    foreach (var eve in e.EntityValidationErrors)
+//    {
+//        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+//            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+//        foreach (var ve in eve.ValidationErrors)
+//        {
+//            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+//                ve.PropertyName, ve.ErrorMessage);
+
+//        }
+//    }
+//    throw;
+//}

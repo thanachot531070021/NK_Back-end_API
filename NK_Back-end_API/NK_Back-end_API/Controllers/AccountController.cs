@@ -23,7 +23,7 @@ namespace NK_Back_end_API.Controllers
 
         //การลงทะเบียน
         [Route("api/account/register")]
-        public IHttpActionResult PostRegister([FromBody] RegisterModel model) 
+        public IHttpActionResult PostRegister([FromBody] RegisterModel model)
         {
             if (ModelState.IsValid)
             {
@@ -35,15 +35,53 @@ namespace NK_Back_end_API.Controllers
                     return Ok(model);
                     //return Json(model);
                 }
-                catch (Exception ex){
+                catch (Exception ex) {
                     ModelState.AddModelError("Excption", ex.Message);
                 }
-             
+
 
             }
 
             return BadRequest(ModelState.GetErrorModelsState());
 
         }
+
+        //เข้าสู่ระบบ 
+        [Route("api/account/login")]
+        public AccessTokenModel PostLogin([FromBody] LoginModel model)
+        {
+            if (ModelState.IsValid) {
+                try {
+                    if (this.Account.Login(model) == true)
+                    {
+                        return (new AccessTokenModel { accessToken= "Access Token String" });
+                    }
+                    throw new Exception("Username or Password is Valid.");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Exception", ex.Message);
+                }
+            }
+
+            throw new HttpResponseException(Request.CreateResponse(
+                HttpStatusCode.BadRequest, 
+                new { Message = ModelState.GetErrorModelsState()    }
+                ));
+
+        }
     }
 }
+
+
+
+//ตัวอย่าง เช็ค data
+//public IHttpActionResult PostLogin([FromBody] LoginModel model)
+//{
+//    if (ModelState.IsValid)
+//    {
+//        return Json(model);
+//    }
+//    return BadRequest(ModelState.GetErrorModelsState());
+
+//}
