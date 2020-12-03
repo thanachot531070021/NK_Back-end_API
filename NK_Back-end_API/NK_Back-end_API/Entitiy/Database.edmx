@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DB_DevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccessTokens">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="token" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="exprise" Type="datetime" Nullable="false" />
+          <Property Name="memberID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Member">
           <Key>
             <PropertyRef Name="id" />
@@ -20,16 +29,48 @@
           <Property Name="created" Type="datetime" Nullable="false" />
           <Property Name="updated" Type="datetime" Nullable="false" />
         </EntityType>
+        <Association Name="FK_AccessTokens_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="AccessTokens" Type="Self.AccessTokens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AccessTokens">
+              <PropertyRef Name="memberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DB_DevModelStoreContainer">
+          <EntitySet Name="AccessTokens" EntityType="Self.AccessTokens" Schema="thanachot_ja" store:Type="Tables" />
           <EntitySet Name="Member" EntityType="Self.Member" Schema="thanachot_ja" store:Type="Tables" />
+          <AssociationSet Name="FK_AccessTokens_Member" Association="Self.FK_AccessTokens_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="AccessTokens" EntitySet="AccessTokens" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_DevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="DB_DevEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Database_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccessTokens" EntityType="DB_DevModel.AccessTokens" />
           <EntitySet Name="Member" EntityType="DB_DevModel.Member" />
+          <AssociationSet Name="FK_AccessTokens_Member" Association="DB_DevModel.FK_AccessTokens_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="AccessTokens" EntitySet="AccessTokens" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AccessTokens">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="token" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="exprise" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="memberID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="DB_DevModel.FK_AccessTokens_Member" FromRole="AccessTokens" ToRole="Member" />
+        </EntityType>
         <EntityType Name="Member">
           <Key>
             <PropertyRef Name="id" />
@@ -44,13 +85,36 @@
           <Property Name="role" Type="Int32" />
           <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="updated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AccessTokens" Relationship="DB_DevModel.FK_AccessTokens_Member" FromRole="Member" ToRole="AccessTokens" />
         </EntityType>
+        <Association Name="FK_AccessTokens_Member">
+          <End Type="DB_DevModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="DB_DevModel.AccessTokens" Role="AccessTokens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AccessTokens">
+              <PropertyRef Name="memberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DB_DevModelStoreContainer" CdmEntityContainer="DB_DevEntities">
+        <EntityContainerMapping StorageEntityContainer="DB_DevModelStoreContainer" CdmEntityContainer="Database_Entities">
+          <EntitySetMapping Name="AccessTokens">
+            <EntityTypeMapping TypeName="DB_DevModel.AccessTokens">
+              <MappingFragment StoreEntitySet="AccessTokens">
+                <ScalarProperty Name="memberID" ColumnName="memberID" />
+                <ScalarProperty Name="exprise" ColumnName="exprise" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Member">
             <EntityTypeMapping TypeName="DB_DevModel.Member">
               <MappingFragment StoreEntitySet="Member">

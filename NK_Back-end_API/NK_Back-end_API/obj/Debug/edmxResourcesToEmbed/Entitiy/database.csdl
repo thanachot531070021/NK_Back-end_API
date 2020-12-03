@@ -1,8 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DB_DevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="DB_DevEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Database_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AccessTokens" EntityType="DB_DevModel.AccessTokens" />
     <EntitySet Name="Member" EntityType="DB_DevModel.Member" />
+    <AssociationSet Name="FK_AccessTokens_Member" Association="DB_DevModel.FK_AccessTokens_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="AccessTokens" EntitySet="AccessTokens" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="AccessTokens">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="token" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="exprise" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="memberID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Member" Relationship="DB_DevModel.FK_AccessTokens_Member" FromRole="AccessTokens" ToRole="Member" />
+  </EntityType>
   <EntityType Name="Member">
     <Key>
       <PropertyRef Name="id" />
@@ -17,5 +32,18 @@
     <Property Name="role" Type="Int32" />
     <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="updated" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="AccessTokens" Relationship="DB_DevModel.FK_AccessTokens_Member" FromRole="Member" ToRole="AccessTokens" />
   </EntityType>
+  <Association Name="FK_AccessTokens_Member">
+    <End Type="DB_DevModel.Member" Role="Member" Multiplicity="1" />
+    <End Type="DB_DevModel.AccessTokens" Role="AccessTokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AccessTokens">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

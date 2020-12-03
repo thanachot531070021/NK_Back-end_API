@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DB_DevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccessTokens">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="token" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="exprise" Type="datetime" Nullable="false" />
+    <Property Name="memberID" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Member">
     <Key>
       <PropertyRef Name="id" />
@@ -15,7 +24,24 @@
     <Property Name="created" Type="datetime" Nullable="false" />
     <Property Name="updated" Type="datetime" Nullable="false" />
   </EntityType>
+  <Association Name="FK_AccessTokens_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="AccessTokens" Type="Self.AccessTokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AccessTokens">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="DB_DevModelStoreContainer">
+    <EntitySet Name="AccessTokens" EntityType="Self.AccessTokens" Schema="thanachot_ja" store:Type="Tables" />
     <EntitySet Name="Member" EntityType="Self.Member" Schema="thanachot_ja" store:Type="Tables" />
+    <AssociationSet Name="FK_AccessTokens_Member" Association="Self.FK_AccessTokens_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="AccessTokens" EntitySet="AccessTokens" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

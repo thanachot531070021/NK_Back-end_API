@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DB_DevModelStoreContainer" CdmEntityContainer="DB_DevEntities">
+  <EntityContainerMapping StorageEntityContainer="DB_DevModelStoreContainer" CdmEntityContainer="Database_Entities">
+    <EntitySetMapping Name="AccessTokens">
+      <EntityTypeMapping TypeName="DB_DevModel.AccessTokens">
+        <MappingFragment StoreEntitySet="AccessTokens">
+          <ScalarProperty Name="memberID" ColumnName="memberID" />
+          <ScalarProperty Name="exprise" ColumnName="exprise" />
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Member">
       <EntityTypeMapping TypeName="DB_DevModel.Member">
         <MappingFragment StoreEntitySet="Member">

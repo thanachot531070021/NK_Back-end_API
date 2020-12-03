@@ -12,6 +12,9 @@ namespace NK_Back_end_API
             // Web API configuration and services
             config.EnableCors(new EnableCorsAttribute("*","*","*"));
 
+            // ADD Handlers
+            config.MessageHandlers.Add(new AuthenticationHandler());
+
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -21,6 +24,8 @@ namespace NK_Back_end_API
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            
 
 
         }

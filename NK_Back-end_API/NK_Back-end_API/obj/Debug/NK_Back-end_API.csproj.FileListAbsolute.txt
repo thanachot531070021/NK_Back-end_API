@@ -183,3 +183,4 @@ D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\bin\System.Web.Co
 D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\bin\System.Web.Http.Cors.dll
 D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\bin\System.Web.Http.Cors.xml
 D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\bin\SimplePassword.dll
+D:\Dev\Angular\NK_Back-end_API\NK_Back-end_API\NK_Back-end_API\bin\jose-jwt.dll
