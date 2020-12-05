@@ -8,6 +8,16 @@
       <End Role="AccessTokens" EntitySet="AccessTokens" />
     </AssociationSet>
   </EntityContainer>
+  <EnumType Name="RoleAccount" UnderlyingType="Int16">
+    <Member Name="Member" Value="1" />
+    <Member Name="Employee" Value="2" />
+    <Member Name="Admin" Value="3" />
+  </EnumType>
+  <EnumType Name="RoleAccounts" UnderlyingType="Int16">
+    <Member Name="Member" Value="1" />
+    <Member Name="Employee" Value="2" />
+    <Member Name="Admin" Value="3" />
+  </EnumType>
   <EntityType Name="AccessTokens">
     <Key>
       <PropertyRef Name="id" />
@@ -29,7 +39,7 @@
     <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="role" Type="Int32" />
+    <Property Name="role" Type="Int16" />
     <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="updated" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="AccessTokens" Relationship="DB_DevModel.FK_AccessTokens_Member" FromRole="Member" ToRole="AccessTokens" />

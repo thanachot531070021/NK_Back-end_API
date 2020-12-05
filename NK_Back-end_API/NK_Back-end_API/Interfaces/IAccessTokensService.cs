@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NK_Back_end_API.Entitiy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,6 @@ namespace NK_Back_end_API.Interfaces
     interface IAccessTokensService
     {
         string GenerateAccessTokens(string email,int minte=60);
+        Member VerifyAccessTokens(string accessTokens);
     }
 }

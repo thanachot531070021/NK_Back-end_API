@@ -10,7 +10,7 @@ namespace NK_Back_end_API.Services
 {
     public class AccountService : IAccountService
     {
-        private Database_Entities db = new Database_Entities();
+        private DB_DevEntities db = new DB_DevEntities();
 
 
         // เข้าสู่ระบบ
@@ -43,7 +43,7 @@ namespace NK_Back_end_API.Services
                     password = model.password,
                     position="",
                     image=null,
-                    role=1,
+                    role= RoleAccount.Member,
                     created=DateTime.Now,
                     updated= DateTime.Now
 

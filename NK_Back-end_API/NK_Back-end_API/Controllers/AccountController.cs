@@ -19,8 +19,9 @@ namespace NK_Back_end_API.Controllers
         protected AccountController()
         {
             this.Account = new AccountService();
-            this.AccessTokens = new DBAccessTokensService();
-            //this.AccessTokens = new JWTAccessTokensService(); 
+            //เลือกว่าจะเป็น แบบ DB หรือ JWT
+            //this.AccessTokens = new DBAccessTokensService();
+            this.AccessTokens = new JWTAccessTokensService();
         }
 
 
