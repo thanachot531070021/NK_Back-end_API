@@ -43,7 +43,7 @@ namespace NK_Back_end_API.Services
                     password = model.password,
                     position="",
                     image=null,
-                    role= RoleAccount.Member,
+                    role= IRoleAccount.Member,
                     created=DateTime.Now,
                     updated= DateTime.Now
 

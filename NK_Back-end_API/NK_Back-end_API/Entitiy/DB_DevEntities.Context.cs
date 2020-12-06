@@ -25,7 +25,6 @@ namespace NK_Back_end_API.Entitiy
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AccessTokens> AccessTokens { get; set; }
         public virtual DbSet<Member> Member { get; set; }
     }
 }

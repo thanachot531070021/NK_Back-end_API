@@ -14,24 +14,16 @@ namespace NK_Back_end_API.Entitiy
     
     public partial class Member
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Member()
-        {
-            this.AccessTokens = new HashSet<AccessTokens>();
-        }
-    
         public int id { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
         public string email { get; set; }
         public string password { get; set; }
         public string position { get; set; }
+        public string image_type { get; set; }
         public byte[] image { get; set; }
-        public RoleAccount role { get; set; }
+        public IRoleAccount role { get; set; }
         public System.DateTime created { get; set; }
         public System.DateTime updated { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccessTokens> AccessTokens { get; set; }
     }
 }

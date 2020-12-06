@@ -11,7 +11,7 @@ namespace NK_Back_end_API.Entitiy
 {
     using System;
     
-    public enum RoleAccount : short
+    public enum IRoleAccount : short
     {
         Admin = 1,
         Employee = 2,

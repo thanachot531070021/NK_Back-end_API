@@ -1,54 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DB_DevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="AccessTokens">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="exprise" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="memberID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Member" Relationship="Self.FK_AccessTokens_Member" FromRole="AccessTokens" ToRole="Member" />
-  </EntityType>
-  <EntityType Name="Member">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="role" Type="DB_DevModel.RoleAccount" />
-    <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="updated" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="AccessTokens" Relationship="Self.FK_AccessTokens_Member" FromRole="Member" ToRole="AccessTokens" />
-  </EntityType>
-  <Association Name="FK_AccessTokens_Member">
-    <End Role="Member" Type="Self.Member" Multiplicity="1" />
-    <End Role="AccessTokens" Type="Self.AccessTokens" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Member">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="AccessTokens">
-        <PropertyRef Name="memberID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="DB_DevEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="AccessTokens" EntityType="Self.AccessTokens" />
-    <EntitySet Name="Member" EntityType="Self.Member" />
-    <AssociationSet Name="FK_AccessTokens_Member" Association="Self.FK_AccessTokens_Member">
-      <End Role="Member" EntitySet="Member" />
-      <End Role="AccessTokens" EntitySet="AccessTokens" />
-    </AssociationSet>
+    <EntitySet Name="Member" EntityType="DB_DevModel.Member" />
   </EntityContainer>
   <EnumType Name="RoleAccount" UnderlyingType="Int16">
     <Member Name="Admin" Value="1" />
     <Member Name="Employee" Value="2" />
     <Member Name="Member" Value="3" />
   </EnumType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="image_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="role" Type="Int16" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="updated" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
 </Schema>

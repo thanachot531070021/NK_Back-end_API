@@ -18,12 +18,6 @@ namespace NK_Back_end_API
     {
         private IAccessTokensService accessTokensService;
 
-        public AuthenticationHandler()
-        {
-            //เลือกว่าจะเป็น แบบ DB หรือ JWT
-            //this.accessTokensService = new DBAccessTokensService();
-            this.accessTokensService = new JWTAccessTokensService();
-        }
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var Authorization = request.Headers.Authorization;
@@ -34,6 +28,10 @@ namespace NK_Back_end_API
                 string AccessTokenType = Authorization.Scheme;
                 if (AccessTokenType.Equals("Bearer"))
                 {
+                    //เลือกว่าจะเป็น แบบ DB หรือ JWT
+                    //this.accessTokensService = new DBAccessTokensService();
+                    this.accessTokensService = new JWTAccessTokensService();
+
                     var MemberItem = this.accessTokensService.VerifyAccessTokens(AccessToken);
                     if (MemberItem != null) {
                         var userLogin = new UserLogin(new GenericIdentity(MemberItem.email), MemberItem.role);
@@ -49,7 +47,7 @@ namespace NK_Back_end_API
         public class UserLogin : GenericPrincipal
         {
             public Member Member { get; set; }
-            public UserLogin(IIdentity identity, RoleAccount roles) 
+            public UserLogin(IIdentity identity, IRoleAccount roles) 
                 : base(identity, new string[] { roles.ToString() })
             {
             }

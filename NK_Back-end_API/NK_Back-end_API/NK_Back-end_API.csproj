@@ -180,43 +180,43 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
-    <Compile Include="Entitiy\AccessTokens.cs">
-      <DependentUpon>Database_Entities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entitiy\Database_Entities.Context.cs">
+    <Compile Include="Entitiy\DB_DevEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Database_Entities.Context.tt</DependentUpon>
+      <DependentUpon>DB_DevEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entitiy\Database_Entities.cs">
+    <Compile Include="Entitiy\DB_DevEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Database_Entities.tt</DependentUpon>
+      <DependentUpon>DB_DevEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entitiy\Database_Entities.Designer.cs">
+    <Compile Include="Entitiy\DB_DevEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Database_Entities.edmx</DependentUpon>
+      <DependentUpon>DB_DevEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entitiy\IRoleAccount.cs">
+      <DependentUpon>DB_DevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entitiy\Member.cs">
-      <DependentUpon>Database_Entities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entitiy\RoleAccount.cs">
-      <DependentUpon>Database_Entities.tt</DependentUpon>
+      <DependentUpon>DB_DevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IAccessTokensService.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />
+    <Compile Include="Interfaces\IMemberService.cs" />
     <Compile Include="Models\ExtensionModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Models\PasswordHashModel.cs" />
+    <Compile Include="Models\ProfileModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
-    <Compile Include="Services\DBAccessTokensService.cs" />
     <Compile Include="Services\JWTAccessTokensService.cs" />
+    <Compile Include="Services\MemberService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -224,15 +224,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Entitiy\Database_Entities.Context.tt">
+    <Content Include="Entitiy\DB_DevEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Database_Entities.edmx</DependentUpon>
-      <LastGenOutput>Database_Entities.Context.cs</LastGenOutput>
+      <DependentUpon>DB_DevEntities.edmx</DependentUpon>
+      <LastGenOutput>DB_DevEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Entitiy\Database_Entities.tt">
+    <Content Include="Entitiy\DB_DevEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Database_Entities.edmx</DependentUpon>
-      <LastGenOutput>Database_Entities.cs</LastGenOutput>
+      <DependentUpon>DB_DevEntities.edmx</DependentUpon>
+      <LastGenOutput>DB_DevEntities.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -259,12 +259,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="libman.json" />
-    <EntityDeploy Include="Entitiy\Database_Entities.edmx">
+    <EntityDeploy Include="Entitiy\DB_DevEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Database_Entities.Designer.cs</LastGenOutput>
+      <LastGenOutput>DB_DevEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Entitiy\Database_Entities.edmx.diagram">
-      <DependentUpon>Database_Entities.edmx</DependentUpon>
+    <Content Include="Entitiy\DB_DevEntities.edmx.diagram">
+      <DependentUpon>DB_DevEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
