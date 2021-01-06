@@ -11,6 +11,9 @@ namespace NK_Back_end_API.Interfaces
     interface IMemberService
     {
         IEnumerable<Member> MemberItem { get; }
+        GetMemberModel GetMembers(MemberFilterOptions filters);
         void UpdatePrifile(string email, ProfileModel model);
+        void ChangePassword(string email,ChangePasswordModel model);
+
     }
 }

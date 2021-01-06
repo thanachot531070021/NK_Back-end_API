@@ -56,18 +56,90 @@ namespace NK_Back_end_API.Controllers
         {
             if (ModelState.IsValid)
             {
-                try {
-                    this.memberService.UpdatePrifile(User.Identity.Name, model);                  
+                try
+                {
+                    this.memberService.UpdatePrifile(User.Identity.Name, model);
 
                     return Ok(this.GetMemberLogin());
                 }
-                catch (Exception ex) {
-                    ModelState.AddModelError("Exception",ex.Message);
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Exception", ex.Message);
                 }
-               
-            }   
+
+            }
             return BadRequest(ModelState.GetErrorModelsState());
         }
+
+        //เปลี่ยนรหัสผ่าน
+        [Route("api/member/change-password")]
+        public IHttpActionResult PostChangePassword([FromBody] ChangePasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try {
+                    this.memberService.ChangePassword(User.Identity.Name, model);
+                    return Ok(new {Message="Password has change." });
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Exception", ex.Message);
+                }
+            }
+            return BadRequest(ModelState.GetErrorModelsState());
+        }
+
+        //แสดงรายการสมาชิกทั้งหมด
+        public  GetMemberModel GetMember([FromUri]MemberFilterOptions filters) {
+
+            
+            if (ModelState.IsValid) {
+                return this.memberService.GetMembers(filters);
+            }
+            throw new HttpResponseException(Request.CreateResponse(
+                HttpStatusCode.BadRequest,
+                new { Message = ModelState.GetErrorModelsState() }
+                ));
+        }
+
+
+        //เพิ่มข้อมูลสมาชิก (จำลอง)
+        [Route("api/member/generate")]
+        public IHttpActionResult PostGenerateMember() {
+            try {
+                var memberItems = new List<Member>();
+                var password = PasswordHashModel.Hash("123456");
+                var positions = new string[] { "Backend developer", "Frontend developer" };
+                var roles = new IRoleAccount[] { IRoleAccount.Admin, IRoleAccount.Employee, IRoleAccount.Member };
+                var random = new Random();
+                for (var index = 1; index <= 10; index++)
+                {
+                    memberItems.Add(new Member
+                    {
+                        email = $"mail-{index}@mail.com",
+                        password = password,
+                        firstname = $"Firstname{index}",
+                        lastname = $"positions{index}",
+                        position = positions[random.Next(0, 2)],
+                        role = roles[random.Next(0, 3)],
+                        created = DateTime.Now,
+                        updated = DateTime.Now
+
+
+                    });
+
+                }
+                var db = new DB_DevEntities();
+                db.Member.AddRange(memberItems);
+                db.SaveChanges();
+                return Ok("Generate successful");
+            }
+            catch (Exception ex) {
+                ModelState.AddModelError("Exception", ex);
+                return BadRequest(ModelState.GetErrorModelsState());
+            }
+        }
+
     }
 }
 

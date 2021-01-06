@@ -11,8 +11,9 @@ namespace NK_Back_end_API.Models
         // ปรับแต่งค่า Error ของModelsState ใหม่
         public static string GetErrorModelsState(this ModelStateDictionary modelsState)
         {
-            var modelValue = modelsState.Values.Select(
-                Values => Values.Errors)
+            var modelValue = modelsState.Values
+                .Select(Values => Values.Errors)
+                .Where(value=>value.Count()>0)
                 .FirstOrDefault();
 
             if (modelValue == null) return null;

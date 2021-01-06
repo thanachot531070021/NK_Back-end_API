@@ -22,7 +22,7 @@ namespace NK_Back_end_API.Models
         public string image
         {
             get
-            {
+            {   
                 if ( image_byte != null && !string.IsNullOrEmpty(image_type) ) {
                 return $"{image_type},{Convert.ToBase64String(image_byte)}";
                 }
