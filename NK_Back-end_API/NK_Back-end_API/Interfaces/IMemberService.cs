@@ -14,6 +14,12 @@ namespace NK_Back_end_API.Interfaces
         GetMemberModel GetMembers(MemberFilterOptions filters);
         void UpdatePrifile(string email, ProfileModel model);
         void ChangePassword(string email,ChangePasswordModel model);
+        void CreateMember(CreateMemberModel model);
+
+        void DeleteMember(int  id);
+
+        void UpdateMember(int id, UpdateMemberModel model);
+
 
     }
 }

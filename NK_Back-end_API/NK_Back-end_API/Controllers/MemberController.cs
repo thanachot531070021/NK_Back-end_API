@@ -77,9 +77,10 @@ namespace NK_Back_end_API.Controllers
         {
             if (ModelState.IsValid)
             {
-                try {
+                try
+                {
                     this.memberService.ChangePassword(User.Identity.Name, model);
-                    return Ok(new {Message="Password has change." });
+                    return Ok(new { Message = "Password has change." });
                 }
                 catch (Exception ex)
                 {
@@ -90,10 +91,12 @@ namespace NK_Back_end_API.Controllers
         }
 
         //แสดงรายการสมาชิกทั้งหมด
-        public  GetMemberModel GetMember([FromUri]MemberFilterOptions filters) {
+        public GetMemberModel GetMember([FromUri] MemberFilterOptions filters)
+        {
 
-            
-            if (ModelState.IsValid) {
+
+            if (ModelState.IsValid)
+            {
                 return this.memberService.GetMembers(filters);
             }
             throw new HttpResponseException(Request.CreateResponse(
@@ -102,11 +105,83 @@ namespace NK_Back_end_API.Controllers
                 ));
         }
 
+        public MemberModel GetMember(int id)
+        {
+            return this.memberService.MemberItem
+                .Select(m => new MemberModel
+                {
+                    id = m.id,
+                    firstname = m.firstname,
+                    lastname = m.lastname,
+                    email = m.email,
+                    position = m.position,
+                    role = m.role,
+                    image_type = m.image_type,
+                    image_byte = m.image,
+                    created = m.created,
+                    updated = m.updated
+                })
+                .SingleOrDefault(m => m.id == id);
+        }
+
+        // สร้างข้อมูลสมาชอกใหม่
+        public IHttpActionResult PostCreatMember([FromBody] CreateMemberModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                this.memberService.CreateMember(model);
+                return Ok("Create successful");
+            }
+            return BadRequest(ModelState.GetErrorModelsState());
+        }
+
+        //ลบข้อมูลสมาชิก
+        public IHttpActionResult DeleteMember(int id)
+        {
+
+            try
+            {
+                this.memberService.DeleteMember(id);
+                return Ok("Delete successful");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Exception", ex.Message);
+            }
+            return BadRequest(ModelState.GetErrorModelsState());
+
+
+            //return Json(new { Message= "DeleteMember ",id });        
+        }
+
+        //แก้ไขข้อมูลสมาชิก
+        public IHttpActionResult PutUpdateMember(int id, [FromBody] UpdateMemberModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try {
+                    this.memberService.UpdateMember(id, model);
+                    return Ok("Update successful");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Exception", ex.Message);
+                }
+            }
+
+            return BadRequest(ModelState.GetErrorModelsState());
+
+            //return Json(new { id = id, model });
+
+        }
+
 
         //เพิ่มข้อมูลสมาชิก (จำลอง)
         [Route("api/member/generate")]
-        public IHttpActionResult PostGenerateMember() {
-            try {
+        public IHttpActionResult PostGenerateMember()
+        {
+            try
+            {
                 var memberItems = new List<Member>();
                 var password = PasswordHashModel.Hash("123456");
                 var positions = new string[] { "Backend developer", "Frontend developer" };
@@ -134,11 +209,14 @@ namespace NK_Back_end_API.Controllers
                 db.SaveChanges();
                 return Ok("Generate successful");
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 ModelState.AddModelError("Exception", ex);
                 return BadRequest(ModelState.GetErrorModelsState());
             }
         }
+
+
 
     }
 }

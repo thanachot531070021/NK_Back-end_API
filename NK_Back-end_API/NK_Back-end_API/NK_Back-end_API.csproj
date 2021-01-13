@@ -208,6 +208,7 @@
     <Compile Include="Interfaces\IAccountService.cs" />
     <Compile Include="Interfaces\IMemberService.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
+    <Compile Include="Models\CreateMemberModel.cs" />
     <Compile Include="Models\ExtensionModel.cs" />
     <Compile Include="Models\GetMemberModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -215,12 +216,17 @@
     <Compile Include="Models\PasswordHashModel.cs" />
     <Compile Include="Models\ProfileModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\UpdateMemberModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\JWTAccessTokensService.cs" />
     <Compile Include="Services\MemberService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database.mdf" />
+    <Content Include="App_Data\Database_log.ldf">
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -289,9 +295,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>

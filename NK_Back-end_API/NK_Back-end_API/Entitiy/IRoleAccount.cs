@@ -13,8 +13,8 @@ namespace NK_Back_end_API.Entitiy
     
     public enum IRoleAccount : short
     {
-        Admin = 1,
+        Admin = 3,
         Employee = 2,
-        Member = 3
+        Member = 1
     }
 }

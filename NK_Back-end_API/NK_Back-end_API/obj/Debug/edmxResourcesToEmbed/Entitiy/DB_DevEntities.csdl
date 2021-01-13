@@ -20,8 +20,8 @@
     <EntitySet Name="Member" EntityType="Self.Member" />
   </EntityContainer>
   <EnumType Name="IRoleAccount" UnderlyingType="Int16">
-    <Member Name="Admin" Value="1" />
+    <Member Name="Admin" Value="3" />
     <Member Name="Employee" Value="2" />
-    <Member Name="Member" Value="3" />
+    <Member Name="Member" Value="1" />
   </EnumType>
 </Schema>
