@@ -195,10 +195,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB_DevEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Entitiy\IRoleAccount.cs">
+    <Compile Include="Entitiy\Member.cs">
       <DependentUpon>DB_DevEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entitiy\Member.cs">
+    <Compile Include="Entitiy\RoleAccount.cs">
       <DependentUpon>DB_DevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">

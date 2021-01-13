@@ -1,25 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DB_DevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DB_DevEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Member" EntityType="DB_DevModel.Member" />
+  </EntityContainer>
+  <EnumType Name="IRoleAccount" UnderlyingType="Int16">
+    <Member Name="Admin" Value="3" />
+    <Member Name="Employee" Value="2" />
+    <Member Name="Member" Value="1" />
+  </EnumType>
   <EntityType Name="Member">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="image_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="role" Type="DB_DevModel.IRoleAccount" />
+    <Property Name="role" Type="DB_DevModel.RoleAccount" />
     <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="updated" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
-  <EntityContainer Name="DB_DevEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Member" EntityType="Self.Member" />
-  </EntityContainer>
-  <EnumType Name="IRoleAccount" UnderlyingType="Int16">
+  <EnumType Name="RoleAccount" UnderlyingType="Int16">
     <Member Name="Admin" Value="3" />
     <Member Name="Employee" Value="2" />
     <Member Name="Member" Value="1" />

@@ -20,7 +20,7 @@ namespace NK_Back_end_API.Models
         public string lastname { get; set; }
         public string email { get; set; }
         public string position { get; set; }
-        public IRoleAccount role { get; set; }
+        public RoleAccount role { get; set; }
         public System.DateTime updated { get; set; }
     }
 

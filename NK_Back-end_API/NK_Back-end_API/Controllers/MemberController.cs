@@ -185,7 +185,7 @@ namespace NK_Back_end_API.Controllers
                 var memberItems = new List<Member>();
                 var password = PasswordHashModel.Hash("123456");
                 var positions = new string[] { "Backend developer", "Frontend developer" };
-                var roles = new IRoleAccount[] { IRoleAccount.Admin, IRoleAccount.Employee, IRoleAccount.Member };
+                var roles = new RoleAccount[] { RoleAccount.Admin, RoleAccount.Employee, RoleAccount.Member };
                 var random = new Random();
                 for (var index = 1; index <= 10; index++)
                 {

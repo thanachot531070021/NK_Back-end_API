@@ -47,7 +47,7 @@ namespace NK_Back_end_API
         public class UserLogin : GenericPrincipal
         {
             public Member Member { get; set; }
-            public UserLogin(IIdentity identity, IRoleAccount roles) 
+            public UserLogin(IIdentity identity, RoleAccount roles) 
                 : base(identity, new string[] { roles.ToString() })
             {
             }

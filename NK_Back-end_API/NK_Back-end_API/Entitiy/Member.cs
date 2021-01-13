@@ -22,7 +22,7 @@ namespace NK_Back_end_API.Entitiy
         public string position { get; set; }
         public string image_type { get; set; }
         public byte[] image { get; set; }
-        public IRoleAccount role { get; set; }
+        public RoleAccount role { get; set; }
         public System.DateTime created { get; set; }
         public System.DateTime updated { get; set; }
     }

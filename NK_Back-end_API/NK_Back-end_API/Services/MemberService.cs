@@ -182,7 +182,7 @@ namespace NK_Back_end_API.Services
                     email = model.email,
                     password = PasswordHashModel.Hash(model.password),
                     position = model.position,
-                    role = IRoleAccount.Member,
+                    role = RoleAccount.Member,
                     created = DateTime.Now,
                     updated = DateTime.Now
                 };

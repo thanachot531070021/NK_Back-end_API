@@ -21,7 +21,7 @@ namespace NK_Back_end_API.Models
         [Required]
         public string position { get; set; }
         [Required]
-        public IRoleAccount role { get; set; }
+        public RoleAccount role { get; set; }
         public string image { get; set; }
 
 

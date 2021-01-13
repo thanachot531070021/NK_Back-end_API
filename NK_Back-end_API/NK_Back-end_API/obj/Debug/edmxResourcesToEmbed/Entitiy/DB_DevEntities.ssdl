@@ -17,6 +17,6 @@
     <Property Name="updated" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityContainer Name="DB_DevModelStoreContainer">
-    <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Member" EntityType="Self.Member" Schema="thanachot_ja" store:Type="Tables" />
   </EntityContainer>
 </Schema>

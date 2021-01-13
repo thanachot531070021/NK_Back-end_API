@@ -29,7 +29,7 @@ namespace NK_Back_end_API.Models
                 return null;
             }
         }
-        public IRoleAccount role { get; set; }
+        public RoleAccount role { get; set; }
         public System.DateTime created { get; set; }
         public System.DateTime updated { get; set; }
 
